@@ -39,11 +39,11 @@ def playerController(song):
 	songId = ""
 
 	# creates the save file if it does not exist
-	if not os.path.exists("../saved_song_data.txt"):
-		with open("../saved_song_data.txt", "w"): pass
+	if not os.path.exists("saved_song_data.SONGS"):
+		with open("saved_song_data.SONGS", "w"): pass
 
 	# checks if the song that the user wants to play exists in the save file
-	saved_songs_txt = open("../saved_song_data.txt", "r")
+	saved_songs_txt = open("saved_song_data.SONGS", "r")
 	saved_songs = saved_songs_txt.read().split("\n\n")
 	for i in range(len(saved_songs)):
 		saved_songs[i] = saved_songs[i].split("\n")
@@ -62,7 +62,7 @@ def playerController(song):
 		print(rawResponse.json())
 		songId = rawResponse.json()["items"][0]["id"]["videoId"]
 
-		with open("../saved_song_data.txt", "a") as save_file:
+		with open("saved_song_data.SONGS", "a") as save_file:
 			save_file.write("\n\n" + song + "\n" + songId)
 
     # this creates the YouTube url for the song
