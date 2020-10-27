@@ -12,9 +12,12 @@ virtualenv "%INSTALLDIR%\venv"
 rem copy source files
 md "%INSTALLDIR%\Assistant"
 xcopy "%CD%\Assistant" "%INSTALLDIR%\Assistant" /E/H
+copy "%CD%\setup.py" "%INSTALLDIR%"
 
 rem activate venv and install pip packages
 call "%INSTALLDIR%\venv\Scripts\activate"
+cd %INSTALLDIR%
+pip install -e .
 pip install pafy python-vlc requests youtube-dl mwparserfromhell SpeechRecognition pyttsx3
 pip install PyAudio-0.2.11-cp38-cp38-win_amd64.whl
 
@@ -38,7 +41,7 @@ rem create start script
 echo creating start script...
 echo @echo off> "%INSTALLDIR%\start.bat"
 echo call "%INSTALLDIR%\venv\Scripts\activate">> "%INSTALLDIR%\start.bat"
-echo "%INSTALLDIR%\Assistant\assistant.py">> "%INSTALLDIR%\start.bat"
+echo python "%INSTALLDIR%\Assistant\assistant.py">> "%INSTALLDIR%\start.bat"
 
 rem setup complete
 echo installation complete!
