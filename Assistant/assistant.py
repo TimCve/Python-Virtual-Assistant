@@ -4,8 +4,6 @@ from Assistant.Config.env_vars import wakeword
 from Assistant.Base import tts, stt
 from Assistant.Skills import wiki, musicplayer
 
-musicplayer.playerController("Thunder")
-
 def powerOff():
 	tts.saySync("powering off")
 	sys.exit()
@@ -48,7 +46,6 @@ while __name__ == "__main__":
 	try:
 		command = stt.voiceCommandActivation()
 		if(wakeword in command):
-			# command.split(" ").index(wakeword)
 			command = " ".join(command.split(" ")[(command.split(" ").index(wakeword) + 1):])
 			print("DETECTED: " + command)
 			executeCommand(command)

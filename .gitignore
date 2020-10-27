@@ -3,3 +3,4 @@
 /Assistant/Config/env_vars.py
 /Assistant.egg-info
 **/*.SONGS
+/start.bat
