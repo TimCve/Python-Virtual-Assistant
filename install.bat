@@ -16,10 +16,10 @@ copy "%CD%\setup.py" "%INSTALLDIR%"
 
 rem activate venv and install pip packages
 call "%INSTALLDIR%\venv\Scripts\activate"
+pip install PyAudio-0.2.11-cp38-cp38-win_amd64.whl
 cd /D %INSTALLDIR%
 pip install -e .
 pip install pafy python-vlc requests youtube-dl mwparserfromhell SpeechRecognition pyttsx3
-pip install PyAudio-0.2.11-cp38-cp38-win_amd64.whl
 
 rem run setup
 cd /D "%INSTALLDIR%\Src"
